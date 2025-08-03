@@ -1,4 +1,4 @@
-# CKD Prediction App
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/055a6766-fdcd-4621-a604-6ce81d313d4a" /># CKD Prediction App
 
 A multipage Streamlit web app that predicts Chronic Kidney Disease (CKD) using clinical features like GFR, BUN, Creatinine, and more. Powered by a tuned XGBoost model, the app provides:
 
@@ -14,6 +14,11 @@ The model achieved ~100% accuracy on validation data, suggesting potential overf
 - Noise scale **0.01–0.05** → Accuracy: **~85–89%**  
 - Noise scale **0.05–0.2** → Accuracy: **~75–85%**
 
+### Live Demo
+
+- Link for the App (deployed on Streamlit Community Cloud) [https://vinayak251104-ckd-prediction-app.streamlit.app/]
+
+
 ### Run Locally
 
 ```bash
@@ -23,9 +28,8 @@ pip install -r requirements.txt
 streamlit run Main.py
 
 
-### Live Demo
 
-[Click here to try the app](https://vinayak251104-ckd-prediction-app.streamlit.app/)
+
 
 
 
