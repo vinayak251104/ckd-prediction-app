@@ -22,3 +22,10 @@ cd ckd-prediction-app
 pip install -r requirements.txt  
 streamlit run Main.py
 
+
+### Live Demo
+
+[Click here to try the app](https://vinayak251104-ckd-prediction-app.streamlit.app/)
+
+
+
