@@ -1,5 +1,3 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/055a6766-fdcd-4621-a604-6ce81d313d4a" /># CKD Prediction App
-
 A multipage Streamlit web app that predicts Chronic Kidney Disease (CKD) using clinical features like GFR, BUN, Creatinine, and more. Powered by a tuned XGBoost model, the app provides:
 
 - Risk prediction from user input  
@@ -26,6 +24,7 @@ git clone https://github.com/vinayak251104/ckd-prediction-app.git
 cd ckd-prediction-app  
 pip install -r requirements.txt  
 streamlit run Main.py
+
 
 
 
