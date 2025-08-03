@@ -1,91 +1,71 @@
------------------------------------------------------
-CKD PREDICTOR MULTIPAGE APP (STREAMLIT)
------------------------------------------------------
+CKD PREDICTION APP
 
-DESCRIPTION
------------
-This project is a full-fledged Chronic Kidney Disease (CKD) prediction dashboard built using Python and Streamlit. It combines a trained machine learning model (XGBoost) with an interactive user interface that enables users to:
+This is a multipage Streamlit web app that predicts Chronic Kidney Disease (CKD) risk based on clinical input. It uses an XGBoost model trained on a synthetic dataset. The app also includes SHAP explainability and performance metrics.
 
-- Enter clinical test values and receive real-time CKD risk predictions.
-- Analyze dataset distributions and SHAP explanations.
-- Understand the model’s performance through metrics and visualization.
+-----------------------------
+LIVE DEMO
+-----------------------------
+Streamlit App: https://vinayak251104-ckd-prediction-app.streamlit.app/
 
-It is structured as a multipage Streamlit app with three pages:
-1. Dashboard (Overview + Data Info)
-2. Prediction Page (CKD Risk Estimator)
-3. Analysis Page (SHAP, Confusion Matrix, Metrics)
+-----------------------------
+APP STRUCTURE
+-----------------------------
+1. DASHBOARD - Feature distributions  
+2. PREDICTION - User form and CKD risk output  
+3. ANALYSIS - SHAP plot, confusion matrix, and evaluation metrics  
 
------------------------------------------------------
+-----------------------------
 DATASET
--------
-Source: Simulated kidney disease dataset.
+-----------------------------
+**Features**: Age, Creatinine Level, BUN, Diabetes, Hypertension, GFR, Urine Output, Dialysis Needed  
+**Target**: CKD Status (0 = No CKD, 1 = CKD)  
 
-Features used:
-- Age
-- Creatinine_Level
-- BUN (Blood Urea Nitrogen)
-- Diabetes (Yes/No)
-- Hypertension (Yes/No)
-- GFR (Glomerular Filtration Rate)
-- Urine Output
-- Dialysis Needed (Yes/No)
-
-Target:
-- CKD_Status (0 = No CKD, 1 = CKD)
-
------------------------------------------------------
+-----------------------------
 MODEL INFO
-----------
-- Model Used: XGBoost Classifier
-- Training Strategy: 80/20 Train-Test Split
-- Hyperparameters: Tuned for max depth, learning rate, estimators
-- Feature Importance: Visualized with SHAP
+-----------------------------
+**Model**: XGBoost Classifier  
+**Training Split**: 80% Train / 20% Test  
+**Metrics on test data**:  
+- Accuracy: 100%  
+- F1 Score (CKD): 1.0  
+- SHAP plots used for feature contribution explanation  
 
------------------------------------------------------
-PREDICTION LOGIC
-----------------
-User inputs values for the 8 features through a Streamlit form. Upon submission:
-- Categorical features are mapped to binary (Yes = 1, No = 0)
-- A prediction probability is generated using the saved model
-- An animated gauge displays CKD risk level
-- Result text is displayed along with user input summary
+-----------------------------
+FUZZY DATA ROBUSTNESS TESTING
+-----------------------------
+Model was tested on randomized synthetic samples with controlled noise to test generalization:
 
------------------------------------------------------
-MODEL PERFORMANCE
------------------
-- Accuracy on real test data (20% holdout): 100%
-  (May indicate mild overfitting due to high model confidence)
+- **Noise scale 0.01 to 0.05** → Accuracy: 85% to 89%  
+- **Noise scale > 1** → Accuracy drops sharply (down to 50% at extreme values)  
 
-- Accuracy on randomized synthetic data (100 samples): 79.1%
-  (Better indicator of generalization — realistic variation introduced)
+This shows the model is reliable under mild perturbations but fragile under heavy noise.
 
-- F1 Score (CKD): 0.80
-- Balanced precision and recall (~0.79 each)
+-----------------------------
+HOW TO RUN LOCALLY
+-----------------------------
+1. Clone the repository  
+2. Navigate to the project folder  
+3. Install required packages  
+4. Run with Streamlit  
 
------------------------------------------------------
-VISUALIZATION FEATURES
------------------------
-✅ Histograms & KDE plots for feature distribution  
-✅ Heatmap of feature correlation  
-✅ SHAP waterfall plot (row-specific feature impact)  
-✅ Confusion matrix with label mapping  
-✅ Classification report (precision, recall, f1-score)
+**Commands**:  
+git clone https://github.com/vinayak251104/ckd-prediction-app.git  
+cd ckd-prediction-app  
+pip install -r requirements.txt  
+streamlit run Main.py  
 
------------------------------------------------------
+-----------------------------
 FILE STRUCTURE
---------------
-📂 kidney_ckd_app/
-├── dashboard.py             # Overview page
-├── predictor.py             # User input form + prediction logic
-├── analysis.py              # SHAP, metrics, confusion matrix
-├── final_xg_model_for_ckd_status.pkl
-├── kidney_disease_dataset.csv
-├── README.txt
+-----------------------------
+Main.py  
+pages/Prediction.py  
+pages/Analysis.py  
+final_xg_model_for_ckd_status.pkl  
+kidney_disease_dataset.csv  
+requirements.txt  
 
-CREDITS
--------
-Developed by: Vinayak (vinayak251104)  
-Modeling + App Design + UI: Solo  
-ML Help: ChatGPT (for review, refactor, and debugging)
+-----------------------------
+AUTHOR
+-----------------------------
+Developed by: Vinayak (vinayak251104)
 
------------------------------------------------------
