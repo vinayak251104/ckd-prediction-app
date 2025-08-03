@@ -17,14 +17,6 @@ The model achieved ~100% accuracy on validation data, suggesting potential overf
 - Link for the App (deployed on Streamlit Community Cloud) [https://vinayak251104-ckd-prediction-app.streamlit.app/]
 
 
-### Run Locally
-
-```bash
-git clone https://github.com/vinayak251104/ckd-prediction-app.git  
-cd ckd-prediction-app  
-pip install -r requirements.txt  
-streamlit run Main.py
-
 
 
 
