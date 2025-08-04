@@ -10,11 +10,12 @@ A multipage Streamlit web app that predicts Chronic Kidney Disease (CKD) using c
 The model achieved ~100% accuracy on validation data, suggesting potential overfitting. To verify robustness, I tested on synthetic data with noise:
 
 - Noise scale **0.01–0.05** → Accuracy: **~85–89%**  
-- Noise scale **0.05–0.2** → Accuracy: **~75–85%**
+- Noise scale **0.05–0.2** → Accuracy: **~80–85%**
 
 ### Live Demo
 
 - Link for the App (deployed on Streamlit Community Cloud) [https://vinayak251104-ckd-prediction-app.streamlit.app/]
+
 
 
 
