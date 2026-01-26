@@ -14,14 +14,9 @@ The model achieved ~100% accuracy on validation data, suggesting potential overf
 - Noise scale **0.01–0.05** → Accuracy: **~85–89%**  
 - Noise scale **0.05–0.2** → Accuracy: **~75–85%**
 
-### Run Locally
 
-```bash
-git clone https://github.com/vinayak251104/ckd-prediction-app.git  
-cd ckd-prediction-app  
-pip install -r requirements.txt  
-streamlit run Main.py
 
 ### Live App: You can run the app directly here https://vinayak251104-ckd-prediction-app.streamlit.app/
+
 
 
