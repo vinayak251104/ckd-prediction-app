@@ -16,7 +16,8 @@ The model achieved ~100% accuracy on validation data, suggesting potential overf
 
 
 
-### Live App: You can run the app directly here https://vinayak251104-ckd-prediction-app.streamlit.app/
+### Live App: https://vinayak251104-ckd-prediction-app.streamlit.app/
+
 
 
 
