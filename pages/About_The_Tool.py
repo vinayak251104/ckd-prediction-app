@@ -1,57 +1,60 @@
 import streamlit as st
-from Main import centered_title
+
 st.set_page_config(
     page_title="About the Tool",
     layout="wide"
 )
+
 st.markdown("""
 <style>
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        align-items: stretch;
+    }
+    @media (max-width: 700px) {
+        .card-grid { grid-template-columns: 1fr; }
+    }
     .card {
-        border: 1px solid #e0e0e0;
+        border: 1px solid rgba(128, 128, 128, 0.3);
         border-radius: 12px;
         padding: 20px;
-        background-color: #ffffff;
-        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
-        margin-bottom: 10px;
+        background-color: var(--secondary-background-color);
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.08);
     }
     .card-title {
         font-size: 22px;
         font-weight: 600;
+        color: var(--text-color);
     }
     .card-desc {
         font-size: 15px;
-        color: #555555;
+        color: var(--text-color);
+        opacity: 0.7;
         margin: 8px 0 12px 0;
     }
 </style>
-            """, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
 st.title("About NephroCheck")
 st.caption("Understanding the purpose and limitations of this tool")
 st.divider()
 
-col1,col2= st.columns(2)
-
-with col1:
-    st.markdown("""
+st.markdown("""
+<div class="card-grid">
     <div class="card">
         <div class="card-title">Purpose</div>
-        <div class="card-desc">
-            NephroCheck uses common clinical parameters to estimate CKD risk using
-        trained machine learning models, with additional interpretability through
-        feature importance and SHAP analysis.
-        </div>
+        <div class="card-desc">NephroCheck uses common clinical parameters to estimate CKD risk using trained machine learning models, with additional interpretability through feature importance and SHAP analysis.</div>
     </div>
-    """, unsafe_allow_html=True)
-with col2:
-    st.markdown("""
     <div class="card">
         <div class="card-title">Limitations</div>
-        <div class="card-desc">
-            Predictions are based on historical data and statistical models. The Model is limited based on the small scale dataset used, there is subject to inaccuracies. This tool is meant to be used for demonstration only.
-        </div>
+        <div class="card-desc">Predictions are based on historical data and statistical models. The model is limited by the small-scale dataset used, so it is subject to inaccuracies. This tool is meant for demonstration only.</div>
     </div>
-    """, unsafe_allow_html=True)
+</div>
+""", unsafe_allow_html=True)
+
+st.write("")
 
 with st.expander("__How to Interpret Predictions__"):
     st.markdown("""
@@ -61,5 +64,4 @@ with st.expander("__How to Interpret Predictions__"):
     """)
 
 st.divider()
-
 
