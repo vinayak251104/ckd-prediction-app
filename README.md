@@ -53,9 +53,6 @@ To probe robustness, the model was also evaluated on synthetic noisy inputs:
 | 0.01 – 0.05 | ~85–89% |
 | 0.05 – 0.2 | ~75–85% |
 
-This drop is consistent with threshold-based labels: small perturbations push borderline patients across a
-cutoff and flip their labels. Validation on independent, real-world data (e.g. the UCI Chronic Kidney
-Disease dataset) is needed before drawing conclusions about clinical performance.
 
 ## Run Locally
 
