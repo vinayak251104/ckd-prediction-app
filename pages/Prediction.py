@@ -80,21 +80,34 @@ with st.sidebar:
 
 
 def ckd_probability(row_df, err, n_draws=300):
-    """Probability of CKD.
+    """Estimate CKD probability with optional lab measurement uncertainty."""
 
-    err == 0  -> raw model probability.
-    err  > 0  -> share of n_draws noisy copies (multiplicative lab error on
-                 creatinine, BUN, GFR, urine output) that the model labels CKD.
-    A fixed seed keeps the result stable when only the threshold slider moves.
-    """
     row_df = row_df[MODEL_COLUMNS]
+
+    # No measurement error → raw model probability
     if err == 0:
         return float(model.predict_proba(row_df)[0][1])
+
     rng = np.random.default_rng(0)
+
+    # Create perturbed copies
     batch = pd.concat([row_df] * n_draws, ignore_index=True).astype(float)
-    noise = rng.normal(0, err, (n_draws, len(LAB_FEATURES)))
-    batch[LAB_FEATURES] = (batch[LAB_FEATURES] * (1 + noise)).clip(lower=0)
-    return float((model.predict(batch) == 1).mean())
+
+    noise = rng.normal(
+        0,
+        err,
+        (n_draws, len(LAB_FEATURES))
+    )
+
+    batch[LAB_FEATURES] = (
+        batch[LAB_FEATURES] * (1 + noise)
+    ).clip(lower=0)
+
+    # Get actual probabilities instead of hard classifications
+    probabilities = model.predict_proba(batch)[:, 1]
+
+    # Average the probabilities
+    return float(probabilities.mean())
 
 
 def make_gauge(value, threshold_pct):
