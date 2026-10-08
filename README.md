@@ -51,6 +51,8 @@ pattern (roughly GFR < 60, BUN > 30, or creatinine > 2.5), and a depth-3 decisio
 with 100% cross-validated accuracy. The perfect scores therefore show that the model learned this pattern.
 They should **not** be read as real-world clinical accuracy.
 
+**Probability behavior**: Because the synthetic labels follow near-deterministic threshold rules, the XGBoost model produces highly polarized probabilities. For example, holding other features constant, changing GFR from 60 to 50 can shift the predicted probability from ~0.9% to ~99.7%. These values represent the model's learned confidence, not calibrated clinical risk probabilities.
+
 Age, diabetes, hypertension and urine output carry almost no predictive signal in this dataset
 (~50% single-feature accuracy, i.e. chance). The model relies mainly on GFR (~51% of feature importance),
 BUN (~26%) and creatinine (~16%). `Dialysis_Needed` (~7%) is a downstream consequence of advanced CKD
